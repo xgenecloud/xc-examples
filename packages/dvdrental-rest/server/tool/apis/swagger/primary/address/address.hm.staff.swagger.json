@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "addressHasManystaff",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/address/has/staff": {
+      "get": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Get address list with staff children",
+        "description": "",
+        "operationId": "addressHasManystaffList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/staff": {
+      "get": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Find staff list by parent address id",
+        "description": "Returns a single address",
+        "operationId": "getstaffByaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "address not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Insert staff under a parent address",
+        "description": "Returns a single address",
+        "operationId": "insertstaffByaddressId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "staff object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/staff/{staffId}": {
+      "get": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Get by staff id parent address id",
+        "description": "Returns a single address",
+        "operationId": "getstaffByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Delete by staff id parent address id",
+        "description": "Returns a single address",
+        "operationId": "deletestaffByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of cstaff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Update staff under a parent address",
+        "description": "Returns a single address",
+        "operationId": "updatestaffByIdAndaddressId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "staff object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/staff/{staffId}/exists": {
+      "get": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Check row exists by staff id and parent address id",
+        "description": "",
+        "operationId": "existsstaffByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/staff/findOne": {
+      "get": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Find one staff by parent address id and filters",
+        "description": "",
+        "operationId": "findOnestaffByaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/staff/count": {
+      "get": {
+        "tags": [
+          "addressHasManystaff"
+        ],
+        "summary": "Get staff count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

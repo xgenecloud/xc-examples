@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "staffHasManypayment",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/staff/has/payment": {
+      "get": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Get staff list with payment children",
+        "description": "",
+        "operationId": "staffHasManypaymentList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/payment": {
+      "get": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Find payment list by parent staff id",
+        "description": "Returns a single staff",
+        "operationId": "getpaymentBystaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "staff not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Insert payment under a parent staff",
+        "description": "Returns a single staff",
+        "operationId": "insertpaymentBystaffId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "payment object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/payment/{paymentId}": {
+      "get": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Get by payment id parent staff id",
+        "description": "Returns a single staff",
+        "operationId": "getpaymentByIdAndstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of payment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Delete by payment id parent staff id",
+        "description": "Returns a single staff",
+        "operationId": "deletepaymentByIdAndstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of cpayment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Update payment under a parent staff",
+        "description": "Returns a single staff",
+        "operationId": "updatepaymentByIdAndstaffId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "payment object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of payment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/payment/{paymentId}/exists": {
+      "get": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Check row exists by payment id and parent staff id",
+        "description": "",
+        "operationId": "existspaymentByIdAndstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of payment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/payment/findOne": {
+      "get": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Find one payment by parent staff id and filters",
+        "description": "",
+        "operationId": "findOnepaymentBystaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/payment/count": {
+      "get": {
+        "tags": [
+          "staffHasManypayment"
+        ],
+        "summary": "Get payment count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

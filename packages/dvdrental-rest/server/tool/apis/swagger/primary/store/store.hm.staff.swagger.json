@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "storeHasManystaff",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/store/has/staff": {
+      "get": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Get store list with staff children",
+        "description": "",
+        "operationId": "storeHasManystaffList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/staff": {
+      "get": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Find staff list by parent store id",
+        "description": "Returns a single store",
+        "operationId": "getstaffBystoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "store not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Insert staff under a parent store",
+        "description": "Returns a single store",
+        "operationId": "insertstaffBystoreId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "staff object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/staff/{staffId}": {
+      "get": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Get by staff id parent store id",
+        "description": "Returns a single store",
+        "operationId": "getstaffByIdAndstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Delete by staff id parent store id",
+        "description": "Returns a single store",
+        "operationId": "deletestaffByIdAndstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of cstaff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Update staff under a parent store",
+        "description": "Returns a single store",
+        "operationId": "updatestaffByIdAndstoreId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "staff object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/staff/{staffId}/exists": {
+      "get": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Check row exists by staff id and parent store id",
+        "description": "",
+        "operationId": "existsstaffByIdAndstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/staff/findOne": {
+      "get": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Find one staff by parent store id and filters",
+        "description": "",
+        "operationId": "findOnestaffBystoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/staff/count": {
+      "get": {
+        "tags": [
+          "storeHasManystaff"
+        ],
+        "summary": "Get staff count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

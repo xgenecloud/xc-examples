@@ -1,0 +1,60 @@
+{
+  "tags": [{
+    "name": "customerBelongsTostore",
+    "description": "Everything about belongs to relation"
+  }],
+  "paths": {
+    "/api/v1/customer/belongs/store": {
+      "get": {
+        "tags": [
+          "customerBelongsTostore"
+        ],
+        "summary": "Get customer list with store parent",
+        "description": "",
+        "operationId": "customerWithParent",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

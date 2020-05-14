@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "addressHasManystore",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/address/has/store": {
+      "get": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Get address list with store children",
+        "description": "",
+        "operationId": "addressHasManystoreList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/store": {
+      "get": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Find store list by parent address id",
+        "description": "Returns a single address",
+        "operationId": "getstoreByaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "address not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Insert store under a parent address",
+        "description": "Returns a single address",
+        "operationId": "insertstoreByaddressId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "store object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/store/{storeId}": {
+      "get": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Get by store id parent address id",
+        "description": "Returns a single address",
+        "operationId": "getstoreByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Delete by store id parent address id",
+        "description": "Returns a single address",
+        "operationId": "deletestoreByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of cstore",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Update store under a parent address",
+        "description": "Returns a single address",
+        "operationId": "updatestoreByIdAndaddressId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "store object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/store/{storeId}/exists": {
+      "get": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Check row exists by store id and parent address id",
+        "description": "",
+        "operationId": "existsstoreByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/store/findOne": {
+      "get": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Find one store by parent address id and filters",
+        "description": "",
+        "operationId": "findOnestoreByaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/store/count": {
+      "get": {
+        "tags": [
+          "addressHasManystore"
+        ],
+        "summary": "Get store count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

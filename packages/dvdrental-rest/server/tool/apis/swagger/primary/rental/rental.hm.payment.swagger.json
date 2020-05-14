@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "rentalHasManypayment",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/rental/has/payment": {
+      "get": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Get rental list with payment children",
+        "description": "",
+        "operationId": "rentalHasManypaymentList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rental/{rentalId}/payment": {
+      "get": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Find payment list by parent rental id",
+        "description": "Returns a single rental",
+        "operationId": "getpaymentByrentalId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "rental not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Insert payment under a parent rental",
+        "description": "Returns a single rental",
+        "operationId": "insertpaymentByrentalId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "payment object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rental/{rentalId}/payment/{paymentId}": {
+      "get": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Get by payment id parent rental id",
+        "description": "Returns a single rental",
+        "operationId": "getpaymentByIdAndrentalId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of parent rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of payment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Delete by payment id parent rental id",
+        "description": "Returns a single rental",
+        "operationId": "deletepaymentByIdAndrentalId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of parent rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of cpayment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Update payment under a parent rental",
+        "description": "Returns a single rental",
+        "operationId": "updatepaymentByIdAndrentalId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "payment object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of payment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rental/{rentalId}/payment/{paymentId}/exists": {
+      "get": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Check row exists by payment id and parent rental id",
+        "description": "",
+        "operationId": "existspaymentByIdAndrentalId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of parent rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "ID of payment",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rental/{rentalId}/payment/findOne": {
+      "get": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Find one payment by parent rental id and filters",
+        "description": "",
+        "operationId": "findOnepaymentByrentalId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of parent rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rental/{rentalId}/payment/count": {
+      "get": {
+        "tags": [
+          "rentalHasManypayment"
+        ],
+        "summary": "Get payment count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinrentalId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of parent rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

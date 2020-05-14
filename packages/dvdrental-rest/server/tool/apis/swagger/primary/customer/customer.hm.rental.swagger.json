@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "customerHasManyrental",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/customer/has/rental": {
+      "get": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Get customer list with rental children",
+        "description": "",
+        "operationId": "customerHasManyrentalList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/rental": {
+      "get": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Find rental list by parent customer id",
+        "description": "Returns a single customer",
+        "operationId": "getrentalBycustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "customer not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Insert rental under a parent customer",
+        "description": "Returns a single customer",
+        "operationId": "insertrentalBycustomerId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "rental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/rental/{rentalId}": {
+      "get": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Get by rental id parent customer id",
+        "description": "Returns a single customer",
+        "operationId": "getrentalByIdAndcustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Delete by rental id parent customer id",
+        "description": "Returns a single customer",
+        "operationId": "deleterentalByIdAndcustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of crental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Update rental under a parent customer",
+        "description": "Returns a single customer",
+        "operationId": "updaterentalByIdAndcustomerId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "rental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/rental/{rentalId}/exists": {
+      "get": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Check row exists by rental id and parent customer id",
+        "description": "",
+        "operationId": "existsrentalByIdAndcustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/rental/findOne": {
+      "get": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Find one rental by parent customer id and filters",
+        "description": "",
+        "operationId": "findOnerentalBycustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/rental/count": {
+      "get": {
+        "tags": [
+          "customerHasManyrental"
+        ],
+        "summary": "Get rental count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithincustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "staffHasManyrental",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/staff/has/rental": {
+      "get": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Get staff list with rental children",
+        "description": "",
+        "operationId": "staffHasManyrentalList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/rental": {
+      "get": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Find rental list by parent staff id",
+        "description": "Returns a single staff",
+        "operationId": "getrentalBystaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "staff not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Insert rental under a parent staff",
+        "description": "Returns a single staff",
+        "operationId": "insertrentalBystaffId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "rental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/rental/{rentalId}": {
+      "get": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Get by rental id parent staff id",
+        "description": "Returns a single staff",
+        "operationId": "getrentalByIdAndstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Delete by rental id parent staff id",
+        "description": "Returns a single staff",
+        "operationId": "deleterentalByIdAndstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of crental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Update rental under a parent staff",
+        "description": "Returns a single staff",
+        "operationId": "updaterentalByIdAndstaffId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "rental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/rental/{rentalId}/exists": {
+      "get": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Check row exists by rental id and parent staff id",
+        "description": "",
+        "operationId": "existsrentalByIdAndstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/rental/findOne": {
+      "get": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Find one rental by parent staff id and filters",
+        "description": "",
+        "operationId": "findOnerentalBystaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/rental/count": {
+      "get": {
+        "tags": [
+          "staffHasManyrental"
+        ],
+        "summary": "Get rental count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinstaffId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of parent staff",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

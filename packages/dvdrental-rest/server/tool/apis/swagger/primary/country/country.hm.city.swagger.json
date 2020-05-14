@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "countryHasManycity",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/country/has/city": {
+      "get": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Get country list with city children",
+        "description": "",
+        "operationId": "countryHasManycityList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/country/{countryId}/city": {
+      "get": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Find city list by parent country id",
+        "description": "Returns a single country",
+        "operationId": "getcityBycountryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of country to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "country not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Insert city under a parent country",
+        "description": "Returns a single country",
+        "operationId": "insertcityBycountryId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "city object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of country to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/country/{countryId}/city/{cityId}": {
+      "get": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Get by city id parent country id",
+        "description": "Returns a single country",
+        "operationId": "getcityByIdAndcountryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of parent country",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Delete by city id parent country id",
+        "description": "Returns a single country",
+        "operationId": "deletecityByIdAndcountryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of parent country",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of ccity",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Update city under a parent country",
+        "description": "Returns a single country",
+        "operationId": "updatecityByIdAndcountryId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "city object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of country to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/country/{countryId}/city/{cityId}/exists": {
+      "get": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Check row exists by city id and parent country id",
+        "description": "",
+        "operationId": "existscityByIdAndcountryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of parent country",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/country/{countryId}/city/findOne": {
+      "get": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Find one city by parent country id and filters",
+        "description": "",
+        "operationId": "findOnecityBycountryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of parent country",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/country/{countryId}/city/count": {
+      "get": {
+        "tags": [
+          "countryHasManycity"
+        ],
+        "summary": "Get city count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithincountryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of parent country",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

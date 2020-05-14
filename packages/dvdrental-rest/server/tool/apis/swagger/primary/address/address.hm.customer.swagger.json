@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "addressHasManycustomer",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/address/has/customer": {
+      "get": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Get address list with customer children",
+        "description": "",
+        "operationId": "addressHasManycustomerList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/customer": {
+      "get": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Find customer list by parent address id",
+        "description": "Returns a single address",
+        "operationId": "getcustomerByaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "address not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Insert customer under a parent address",
+        "description": "Returns a single address",
+        "operationId": "insertcustomerByaddressId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "customer object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/customer/{customerId}": {
+      "get": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Get by customer id parent address id",
+        "description": "Returns a single address",
+        "operationId": "getcustomerByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Delete by customer id parent address id",
+        "description": "Returns a single address",
+        "operationId": "deletecustomerByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of ccustomer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Update customer under a parent address",
+        "description": "Returns a single address",
+        "operationId": "updatecustomerByIdAndaddressId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "customer object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/customer/{customerId}/exists": {
+      "get": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Check row exists by customer id and parent address id",
+        "description": "",
+        "operationId": "existscustomerByIdAndaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/customer/findOne": {
+      "get": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Find one customer by parent address id and filters",
+        "description": "",
+        "operationId": "findOnecustomerByaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/address/{addressId}/customer/count": {
+      "get": {
+        "tags": [
+          "addressHasManycustomer"
+        ],
+        "summary": "Get customer count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinaddressId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of parent address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

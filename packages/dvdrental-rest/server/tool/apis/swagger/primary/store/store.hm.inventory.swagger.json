@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "storeHasManyinventory",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/store/has/inventory": {
+      "get": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Get store list with inventory children",
+        "description": "",
+        "operationId": "storeHasManyinventoryList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/inventory": {
+      "get": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Find inventory list by parent store id",
+        "description": "Returns a single store",
+        "operationId": "getinventoryBystoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "store not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Insert inventory under a parent store",
+        "description": "Returns a single store",
+        "operationId": "insertinventoryBystoreId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "inventory object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/inventory/{inventoryId}": {
+      "get": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Get by inventory id parent store id",
+        "description": "Returns a single store",
+        "operationId": "getinventoryByIdAndstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Delete by inventory id parent store id",
+        "description": "Returns a single store",
+        "operationId": "deleteinventoryByIdAndstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of cinventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Update inventory under a parent store",
+        "description": "Returns a single store",
+        "operationId": "updateinventoryByIdAndstoreId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "inventory object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of store to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/inventory/{inventoryId}/exists": {
+      "get": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Check row exists by inventory id and parent store id",
+        "description": "",
+        "operationId": "existsinventoryByIdAndstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/inventory/findOne": {
+      "get": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Find one inventory by parent store id and filters",
+        "description": "",
+        "operationId": "findOneinventoryBystoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/{storeId}/inventory/count": {
+      "get": {
+        "tags": [
+          "storeHasManyinventory"
+        ],
+        "summary": "Get inventory count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinstoreId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "storeId",
+            "in": "path",
+            "description": "ID of parent store",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

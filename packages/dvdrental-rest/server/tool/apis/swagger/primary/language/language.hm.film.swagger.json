@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "languageHasManyfilm",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/language/has/film": {
+      "get": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Get language list with film children",
+        "description": "",
+        "operationId": "languageHasManyfilmList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/language/{languageId}/film": {
+      "get": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Find film list by parent language id",
+        "description": "Returns a single language",
+        "operationId": "getfilmBylanguageId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of language to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "language not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Insert film under a parent language",
+        "description": "Returns a single language",
+        "operationId": "insertfilmBylanguageId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "film object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of language to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/language/{languageId}/film/{filmId}": {
+      "get": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Get by film id parent language id",
+        "description": "Returns a single language",
+        "operationId": "getfilmByIdAndlanguageId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of parent language",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of film",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Delete by film id parent language id",
+        "description": "Returns a single language",
+        "operationId": "deletefilmByIdAndlanguageId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of parent language",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of cfilm",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Update film under a parent language",
+        "description": "Returns a single language",
+        "operationId": "updatefilmByIdAndlanguageId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "film object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of language to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of film",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/language/{languageId}/film/{filmId}/exists": {
+      "get": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Check row exists by film id and parent language id",
+        "description": "",
+        "operationId": "existsfilmByIdAndlanguageId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of parent language",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of film",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/language/{languageId}/film/findOne": {
+      "get": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Find one film by parent language id and filters",
+        "description": "",
+        "operationId": "findOnefilmBylanguageId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of parent language",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/language/{languageId}/film/count": {
+      "get": {
+        "tags": [
+          "languageHasManyfilm"
+        ],
+        "summary": "Get film count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinlanguageId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "languageId",
+            "in": "path",
+            "description": "ID of parent language",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

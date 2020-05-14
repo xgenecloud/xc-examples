@@ -1,0 +1,723 @@
+{
+  "tags": [{
+    "name": "staff",
+    "description": "Everything about your staff"
+  }],
+  "paths": {
+    "/api/v1/staff": {
+      "post": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Add a new staff",
+        "description": "",
+        "operationId": "addstaff",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "staff object that needs to add",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/staff"
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Get list",
+        "description": "",
+        "operationId": "getstaff",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Find staff by ID",
+        "description": "Returns a single staff",
+        "operationId": "getstaffById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "staffId",
+          "in": "path",
+          "description": "ID of staff to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/staff"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "staff not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Updates a staff",
+        "description": "",
+        "operationId": "updatestaff",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "staffId",
+            "in": "path",
+            "description": "ID of staff to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "staff object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Deletes a staff",
+        "description": "",
+        "operationId": "deletestaff",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "staffId",
+          "in": "path",
+          "description": "ID of staff to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "staff not found"
+          }
+        }
+      }
+    },
+
+
+    "/api/v1/staff/bulk": {
+      "post": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Bulk staff insert",
+        "description": "",
+        "operationId": "bulkstaffInsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "staff objects",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Updates a staff",
+        "description": "",
+        "operationId": "updatestaff",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "staff objects with id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Deletes a staff",
+        "description": "",
+        "operationId": "deletestaff",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "staff objects contains id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "staff not found"
+          }
+        }
+      }
+    },
+    "/api/v1/staff/findOne": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "findOnestaff",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/{staffId}/exists": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Check staff with provided ID exists",
+        "description": "Returns a single staff",
+        "operationId": "checkstaffExists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "staffId",
+          "in": "path",
+          "description": "ID of staff",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/count": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Get staff count",
+        "operationId": "getstaffCount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "query",
+          "name": "where",
+          "type": "String",
+          "description": "Where expression"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/groupby/{columnName}": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Group by column",
+        "description": "",
+        "operationId": "staffGroupByColumn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/distribution/{columnName}": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "staffDistribution",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "path",
+          "name": "columnName",
+          "type": "String",
+          "description": "Column name"
+        }, {
+          "in": "query",
+          "name": "min",
+          "description": "min value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "max",
+          "description": "max value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "step",
+          "description": "step value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "steps",
+          "description": "steps value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "func",
+          "description": "comma separated aggregation functions",
+          "type": "string"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/distinct/{columnName}": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "staffDistinct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/aggregate/{columnName}": {
+      "get": {
+        "tags": [
+          "staff"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "staffAggregate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "fields",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "func",
+            "type": "String",
+            "description": "Comma seperated aggregate functions"
+          },
+          {
+            "in": "query",
+            "name": "having",
+            "type": "String",
+            "description": "Having expression"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/staff"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "staff": {
+      "type": "object",
+      "properties": {
+        "staff_id": {
+          "type": "integer",
+          "nullable": false,
+          "readOnly": true
+        },
+        "first_name": {
+          "type": "string",
+          "nullable": false
+        },
+        "last_name": {
+          "type": "string",
+          "nullable": false
+        },
+        "address_id": {
+          "type": "integer",
+          "nullable": false
+        },
+        "picture": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "store_id": {
+          "type": "integer",
+          "nullable": false
+        },
+        "active": {
+          "type": "integer",
+          "nullable": false
+        },
+        "username": {
+          "type": "string",
+          "nullable": false
+        },
+        "password": {
+          "type": "string"
+        },
+        "last_update": {
+          "type": "string",
+          "nullable": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "inventoryHasManyrental",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/inventory/has/rental": {
+      "get": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Get inventory list with rental children",
+        "description": "",
+        "operationId": "inventoryHasManyrentalList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inventory/{inventoryId}/rental": {
+      "get": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Find rental list by parent inventory id",
+        "description": "Returns a single inventory",
+        "operationId": "getrentalByinventoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of inventory to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "inventory not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Insert rental under a parent inventory",
+        "description": "Returns a single inventory",
+        "operationId": "insertrentalByinventoryId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "rental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of inventory to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inventory/{inventoryId}/rental/{rentalId}": {
+      "get": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Get by rental id parent inventory id",
+        "description": "Returns a single inventory",
+        "operationId": "getrentalByIdAndinventoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of parent inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Delete by rental id parent inventory id",
+        "description": "Returns a single inventory",
+        "operationId": "deleterentalByIdAndinventoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of parent inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of crental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Update rental under a parent inventory",
+        "description": "Returns a single inventory",
+        "operationId": "updaterentalByIdAndinventoryId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "rental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of inventory to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inventory/{inventoryId}/rental/{rentalId}/exists": {
+      "get": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Check row exists by rental id and parent inventory id",
+        "description": "",
+        "operationId": "existsrentalByIdAndinventoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of parent inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "rentalId",
+            "in": "path",
+            "description": "ID of rental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inventory/{inventoryId}/rental/findOne": {
+      "get": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Find one rental by parent inventory id and filters",
+        "description": "",
+        "operationId": "findOnerentalByinventoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of parent inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/inventory/{inventoryId}/rental/count": {
+      "get": {
+        "tags": [
+          "inventoryHasManyrental"
+        ],
+        "summary": "Get rental count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithininventoryId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "inventoryId",
+            "in": "path",
+            "description": "ID of parent inventory",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

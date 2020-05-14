@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "actorHasManyfilm_actor",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/actor/has/film_actor": {
+      "get": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Get actor list with film_actor children",
+        "description": "",
+        "operationId": "actorHasManyfilm_actorList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/actor/{actorId}/film_actor": {
+      "get": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Find film_actor list by parent actor id",
+        "description": "Returns a single actor",
+        "operationId": "getfilm_actorByactorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of actor to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "actor not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Insert film_actor under a parent actor",
+        "description": "Returns a single actor",
+        "operationId": "insertfilm_actorByactorId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "film_actor object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of actor to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/actor/{actorId}/film_actor/{film_actorId}": {
+      "get": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Get by film_actor id parent actor id",
+        "description": "Returns a single actor",
+        "operationId": "getfilm_actorByIdAndactorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of parent actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "film_actorId",
+            "in": "path",
+            "description": "ID of film_actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Delete by film_actor id parent actor id",
+        "description": "Returns a single actor",
+        "operationId": "deletefilm_actorByIdAndactorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of parent actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "film_actorId",
+            "in": "path",
+            "description": "ID of cfilm_actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Update film_actor under a parent actor",
+        "description": "Returns a single actor",
+        "operationId": "updatefilm_actorByIdAndactorId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "film_actor object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of actor to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "film_actorId",
+            "in": "path",
+            "description": "ID of film_actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/actor/{actorId}/film_actor/{film_actorId}/exists": {
+      "get": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Check row exists by film_actor id and parent actor id",
+        "description": "",
+        "operationId": "existsfilm_actorByIdAndactorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of parent actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "film_actorId",
+            "in": "path",
+            "description": "ID of film_actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/actor/{actorId}/film_actor/findOne": {
+      "get": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Find one film_actor by parent actor id and filters",
+        "description": "",
+        "operationId": "findOnefilm_actorByactorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of parent actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/actor/{actorId}/film_actor/count": {
+      "get": {
+        "tags": [
+          "actorHasManyfilm_actor"
+        ],
+        "summary": "Get film_actor count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinactorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "actorId",
+            "in": "path",
+            "description": "ID of parent actor",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

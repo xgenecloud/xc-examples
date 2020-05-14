@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "cityHasManyaddress",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/city/has/address": {
+      "get": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Get city list with address children",
+        "description": "",
+        "operationId": "cityHasManyaddressList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/{cityId}/address": {
+      "get": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Find address list by parent city id",
+        "description": "Returns a single city",
+        "operationId": "getaddressBycityId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of city to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "city not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Insert address under a parent city",
+        "description": "Returns a single city",
+        "operationId": "insertaddressBycityId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "address object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of city to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/{cityId}/address/{addressId}": {
+      "get": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Get by address id parent city id",
+        "description": "Returns a single city",
+        "operationId": "getaddressByIdAndcityId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of parent city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Delete by address id parent city id",
+        "description": "Returns a single city",
+        "operationId": "deleteaddressByIdAndcityId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of parent city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of caddress",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Update address under a parent city",
+        "description": "Returns a single city",
+        "operationId": "updateaddressByIdAndcityId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "address object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of city to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/{cityId}/address/{addressId}/exists": {
+      "get": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Check row exists by address id and parent city id",
+        "description": "",
+        "operationId": "existsaddressByIdAndcityId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of parent city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "description": "ID of address",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/{cityId}/address/findOne": {
+      "get": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Find one address by parent city id and filters",
+        "description": "",
+        "operationId": "findOneaddressBycityId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of parent city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/{cityId}/address/count": {
+      "get": {
+        "tags": [
+          "cityHasManyaddress"
+        ],
+        "summary": "Get address count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithincityId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "cityId",
+            "in": "path",
+            "description": "ID of parent city",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
