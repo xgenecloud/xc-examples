@@ -16,10 +16,10 @@ module.exports = `
 
     type Query { 
 		StaffList(where: String, limit: Int, offset: Int, sort: String): [Staff]
-		StaffRead(id:String): Staff
-		StaffExists(id: String): Boolean
-		StaffFindOne(where: String): Staff
-		StaffCount(where: String): Int
+		Staff(id:String!): Staff
+		StaffExists(id: String!): Boolean
+		StaffFindOne(where: String!): Staff
+		StaffCount(where: String!): Int
 		StaffDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Staff]
 		StaffGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [StaffGroupBy]
 		StaffAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [StaffAggregate]

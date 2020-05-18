@@ -8,10 +8,10 @@ module.exports = `
 
     type Query { 
 		CategoryList(where: String, limit: Int, offset: Int, sort: String): [Category]
-		CategoryRead(id:String): Category
-		CategoryExists(id: String): Boolean
-		CategoryFindOne(where: String): Category
-		CategoryCount(where: String): Int
+		Category(id:String!): Category
+		CategoryExists(id: String!): Boolean
+		CategoryFindOne(where: String!): Category
+		CategoryCount(where: String!): Int
 		CategoryDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Category]
 		CategoryGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [CategoryGroupBy]
 		CategoryAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [CategoryAggregate]

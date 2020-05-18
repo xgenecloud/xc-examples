@@ -96,7 +96,7 @@ class CountryResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       CountryList: this.list.bind(this),
-      CountryRead: this.read.bind(this),
+      Country: this.read.bind(this),
       CountryCreate: this.create.bind(this),
       CountryUpdate: this.update.bind(this),
       CountryDelete: this.delete.bind(this),

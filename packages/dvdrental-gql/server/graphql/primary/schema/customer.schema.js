@@ -14,10 +14,10 @@ module.exports = `
 
     type Query { 
 		CustomerList(where: String, limit: Int, offset: Int, sort: String): [Customer]
-		CustomerRead(id:String): Customer
-		CustomerExists(id: String): Boolean
-		CustomerFindOne(where: String): Customer
-		CustomerCount(where: String): Int
+		Customer(id:String!): Customer
+		CustomerExists(id: String!): Boolean
+		CustomerFindOne(where: String!): Customer
+		CustomerCount(where: String!): Int
 		CustomerDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Customer]
 		CustomerGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [CustomerGroupBy]
 		CustomerAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [CustomerAggregate]

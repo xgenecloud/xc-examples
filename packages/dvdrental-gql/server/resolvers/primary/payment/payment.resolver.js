@@ -96,7 +96,7 @@ class PaymentResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       PaymentList: this.list.bind(this),
-      PaymentRead: this.read.bind(this),
+      Payment: this.read.bind(this),
       PaymentCreate: this.create.bind(this),
       PaymentUpdate: this.update.bind(this),
       PaymentDelete: this.delete.bind(this),

@@ -31,6 +31,7 @@ module.exports = {
       columnName: 'country_id',
       type: 'integer',
       dataType: 'smallint',
+      notNull: true,
       unsigned: true,
       data_type_x_precision: "5",
       validate: {
@@ -67,7 +68,7 @@ module.exports = {
     "tableSchema": "sakila"
   }],
   belongsTo: [{
-    "constraintName": "city_country_id_foreign",
+    "constraintName": "fk_city_country",
     "tableName": "city",
     "columnName": "country_id",
     "positionInUniqueConstraint": 1,
@@ -75,7 +76,7 @@ module.exports = {
     "referencedColumnName": "country_id",
     "matchOption": "NONE",
     "updateRule": "CASCADE",
-    "deleteRule": "CASCADE",
+    "deleteRule": "RESTRICT",
     "tableSchema": "sakila"
   }],
   dbType: 'mysql'

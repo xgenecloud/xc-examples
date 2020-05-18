@@ -96,7 +96,7 @@ class RentalResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       RentalList: this.list.bind(this),
-      RentalRead: this.read.bind(this),
+      Rental: this.read.bind(this),
       RentalCreate: this.create.bind(this),
       RentalUpdate: this.update.bind(this),
       RentalDelete: this.delete.bind(this),

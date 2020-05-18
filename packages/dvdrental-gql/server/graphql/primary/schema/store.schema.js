@@ -9,10 +9,10 @@ module.exports = `
 
     type Query { 
 		StoreList(where: String, limit: Int, offset: Int, sort: String): [Store]
-		StoreRead(id:String): Store
-		StoreExists(id: String): Boolean
-		StoreFindOne(where: String): Store
-		StoreCount(where: String): Int
+		Store(id:String!): Store
+		StoreExists(id: String!): Boolean
+		StoreFindOne(where: String!): Store
+		StoreCount(where: String!): Int
 		StoreDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Store]
 		StoreGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [StoreGroupBy]
 		StoreAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [StoreAggregate]

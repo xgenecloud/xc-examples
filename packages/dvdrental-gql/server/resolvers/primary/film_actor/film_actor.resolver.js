@@ -96,7 +96,7 @@ class FilmActorResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       FilmActorList: this.list.bind(this),
-      FilmActorRead: this.read.bind(this),
+      FilmActor: this.read.bind(this),
       FilmActorCreate: this.create.bind(this),
       FilmActorUpdate: this.update.bind(this),
       FilmActorDelete: this.delete.bind(this),

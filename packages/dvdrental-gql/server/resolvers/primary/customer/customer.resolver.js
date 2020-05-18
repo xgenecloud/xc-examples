@@ -96,7 +96,7 @@ class CustomerResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       CustomerList: this.list.bind(this),
-      CustomerRead: this.read.bind(this),
+      Customer: this.read.bind(this),
       CustomerCreate: this.create.bind(this),
       CustomerUpdate: this.update.bind(this),
       CustomerDelete: this.delete.bind(this),

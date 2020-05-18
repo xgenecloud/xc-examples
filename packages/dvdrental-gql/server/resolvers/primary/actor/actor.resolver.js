@@ -96,7 +96,7 @@ class ActorResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       ActorList: this.list.bind(this),
-      ActorRead: this.read.bind(this),
+      Actor: this.read.bind(this),
       ActorCreate: this.create.bind(this),
       ActorUpdate: this.update.bind(this),
       ActorDelete: this.delete.bind(this),

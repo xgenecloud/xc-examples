@@ -8,10 +8,10 @@ module.exports = `
 
     type Query { 
 		CountryList(where: String, limit: Int, offset: Int, sort: String): [Country]
-		CountryRead(id:String): Country
-		CountryExists(id: String): Boolean
-		CountryFindOne(where: String): Country
-		CountryCount(where: String): Int
+		Country(id:String!): Country
+		CountryExists(id: String!): Boolean
+		CountryFindOne(where: String!): Country
+		CountryCount(where: String!): Int
 		CountryDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Country]
 		CountryGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [CountryGroupBy]
 		CountryAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [CountryAggregate]

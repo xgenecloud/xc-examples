@@ -5,7 +5,7 @@ module.exports.permissions = {
     user: true,
     guest: true
   },
-  RentalRead: {
+  Rental: {
     admin: true,
     user: true,
     guest: true

@@ -20,7 +20,7 @@ module.exports = {
       type: 'string',
       dataType: 'varchar',
       notNull: true,
-      data_type_x_precision: "255",
+      data_type_x_precision: "128",
       validate: {
         func: [],
         args: [],

@@ -9,10 +9,10 @@ module.exports = `
 
     type Query { 
 		InventoryList(where: String, limit: Int, offset: Int, sort: String): [Inventory]
-		InventoryRead(id:String): Inventory
-		InventoryExists(id: String): Boolean
-		InventoryFindOne(where: String): Inventory
-		InventoryCount(where: String): Int
+		Inventory(id:String!): Inventory
+		InventoryExists(id: String!): Boolean
+		InventoryFindOne(where: String!): Inventory
+		InventoryCount(where: String!): Int
 		InventoryDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Inventory]
 		InventoryGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [InventoryGroupBy]
 		InventoryAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [InventoryAggregate]

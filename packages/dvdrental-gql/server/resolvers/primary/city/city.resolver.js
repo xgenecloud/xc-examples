@@ -96,7 +96,7 @@ class CityResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       CityList: this.list.bind(this),
-      CityRead: this.read.bind(this),
+      City: this.read.bind(this),
       CityCreate: this.create.bind(this),
       CityUpdate: this.update.bind(this),
       CityDelete: this.delete.bind(this),

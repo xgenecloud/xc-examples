@@ -8,10 +8,10 @@ module.exports = `
 
     type Query { 
 		FilmTextList(where: String, limit: Int, offset: Int, sort: String): [FilmText]
-		FilmTextRead(id:String): FilmText
-		FilmTextExists(id: String): Boolean
-		FilmTextFindOne(where: String): FilmText
-		FilmTextCount(where: String): Int
+		FilmText(id:String!): FilmText
+		FilmTextExists(id: String!): Boolean
+		FilmTextFindOne(where: String!): FilmText
+		FilmTextCount(where: String!): Int
 		FilmTextDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [FilmText]
 		FilmTextGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [FilmTextGroupBy]
 		FilmTextAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [FilmTextAggregate]

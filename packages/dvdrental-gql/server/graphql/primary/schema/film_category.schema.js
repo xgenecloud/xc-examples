@@ -8,10 +8,10 @@ module.exports = `
 
     type Query { 
 		FilmCategoryList(where: String, limit: Int, offset: Int, sort: String): [FilmCategory]
-		FilmCategoryRead(id:String): FilmCategory
-		FilmCategoryExists(id: String): Boolean
-		FilmCategoryFindOne(where: String): FilmCategory
-		FilmCategoryCount(where: String): Int
+		FilmCategory(id:String!): FilmCategory
+		FilmCategoryExists(id: String!): Boolean
+		FilmCategoryFindOne(where: String!): FilmCategory
+		FilmCategoryCount(where: String!): Int
 		FilmCategoryDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [FilmCategory]
 		FilmCategoryGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [FilmCategoryGroupBy]
 		FilmCategoryAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [FilmCategoryAggregate]

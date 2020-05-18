@@ -9,10 +9,10 @@ module.exports = `
 
     type Query { 
 		CityList(where: String, limit: Int, offset: Int, sort: String): [City]
-		CityRead(id:String): City
-		CityExists(id: String): Boolean
-		CityFindOne(where: String): City
-		CityCount(where: String): Int
+		City(id:String!): City
+		CityExists(id: String!): Boolean
+		CityFindOne(where: String!): City
+		CityCount(where: String!): Int
 		CityDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [City]
 		CityGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [CityGroupBy]
 		CityAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [CityAggregate]

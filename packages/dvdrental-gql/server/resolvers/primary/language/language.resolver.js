@@ -96,7 +96,7 @@ class LanguageResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       LanguageList: this.list.bind(this),
-      LanguageRead: this.read.bind(this),
+      Language: this.read.bind(this),
       LanguageCreate: this.create.bind(this),
       LanguageUpdate: this.update.bind(this),
       LanguageDelete: this.delete.bind(this),

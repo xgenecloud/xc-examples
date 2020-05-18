@@ -96,7 +96,7 @@ class AddressResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       AddressList: this.list.bind(this),
-      AddressRead: this.read.bind(this),
+      Address: this.read.bind(this),
       AddressCreate: this.create.bind(this),
       AddressUpdate: this.update.bind(this),
       AddressDelete: this.delete.bind(this),

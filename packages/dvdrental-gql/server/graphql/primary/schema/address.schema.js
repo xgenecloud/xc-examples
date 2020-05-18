@@ -14,10 +14,10 @@ module.exports = `
 
     type Query { 
 		AddressList(where: String, limit: Int, offset: Int, sort: String): [Address]
-		AddressRead(id:String): Address
-		AddressExists(id: String): Boolean
-		AddressFindOne(where: String): Address
-		AddressCount(where: String): Int
+		Address(id:String!): Address
+		AddressExists(id: String!): Boolean
+		AddressFindOne(where: String!): Address
+		AddressCount(where: String!): Int
 		AddressDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Address]
 		AddressGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [AddressGroupBy]
 		AddressAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [AddressAggregate]

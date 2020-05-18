@@ -5,7 +5,7 @@ module.exports.permissions = {
     user: true,
     guest: true
   },
-  PaymentRead: {
+  Payment: {
     admin: true,
     user: true,
     guest: true

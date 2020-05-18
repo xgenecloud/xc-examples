@@ -96,7 +96,7 @@ class StoreResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       StoreList: this.list.bind(this),
-      StoreRead: this.read.bind(this),
+      Store: this.read.bind(this),
       StoreCreate: this.create.bind(this),
       StoreUpdate: this.update.bind(this),
       StoreDelete: this.delete.bind(this),

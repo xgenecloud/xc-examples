@@ -96,7 +96,7 @@ class UsersResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       UsersList: this.list.bind(this),
-      UsersRead: this.read.bind(this),
+      Users: this.read.bind(this),
       UsersCreate: this.create.bind(this),
       UsersUpdate: this.update.bind(this),
       UsersDelete: this.delete.bind(this),

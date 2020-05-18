@@ -3,9 +3,9 @@ module.exports.permissions = {
   ActorList: {
     admin: true,
     user: true,
-    guest: false
+    guest: true
   },
-  ActorRead: {
+  Actor: {
     admin: true,
     user: true,
     guest: true

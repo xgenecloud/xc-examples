@@ -5,7 +5,7 @@ module.exports.permissions = {
     user: true,
     guest: true
   },
-  UsersRead: {
+  Users: {
     admin: true,
     user: true,
     guest: true

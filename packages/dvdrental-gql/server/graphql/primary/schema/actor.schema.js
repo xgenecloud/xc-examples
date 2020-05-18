@@ -5,15 +5,14 @@ module.exports = `
 		first_name: String,
 		last_name: String,
 		last_update: String,
-		title4: Int,
 	}
 
     type Query { 
 		ActorList(where: String, limit: Int, offset: Int, sort: String): [Actor]
-		ActorRead(id:String): Actor
-		ActorExists(id: String): Boolean
-		ActorFindOne(where: String): Actor
-		ActorCount(where: String): Int
+		Actor(id:String!): Actor
+		ActorExists(id: String!): Boolean
+		ActorFindOne(where: String!): Actor
+		ActorCount(where: String!): Int
 		ActorDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Actor]
 		ActorGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [ActorGroupBy]
 		ActorAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [ActorAggregate]
@@ -36,7 +35,6 @@ module.exports = `
 		first_name: String,
 		last_name: String,
 		last_update: String,
-		title4: Int,
 
 		FilmActorList: [FilmActor]
 		FilmActorCount: Int
@@ -46,7 +44,6 @@ type ActorGroupBy {
 		first_name: String,
 		last_name: String,
 		last_update: String,
-		title4: Int,
 		count: Int
 	}
 type ActorAggregate { 
@@ -54,7 +51,6 @@ type ActorAggregate {
 		first_name: String,
 		last_name: String,
 		last_update: String,
-		title4: Int,
 		count: Int,
 		avg: Float,
 		min: Float,

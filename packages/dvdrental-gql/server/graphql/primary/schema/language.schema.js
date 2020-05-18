@@ -8,10 +8,10 @@ module.exports = `
 
     type Query { 
 		LanguageList(where: String, limit: Int, offset: Int, sort: String): [Language]
-		LanguageRead(id:String): Language
-		LanguageExists(id: String): Boolean
-		LanguageFindOne(where: String): Language
-		LanguageCount(where: String): Int
+		Language(id:String!): Language
+		LanguageExists(id: String!): Boolean
+		LanguageFindOne(where: String!): Language
+		LanguageCount(where: String!): Int
 		LanguageDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Language]
 		LanguageGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [LanguageGroupBy]
 		LanguageAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [LanguageAggregate]

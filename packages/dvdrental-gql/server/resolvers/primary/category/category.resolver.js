@@ -96,7 +96,7 @@ class CategoryResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       CategoryList: this.list.bind(this),
-      CategoryRead: this.read.bind(this),
+      Category: this.read.bind(this),
       CategoryCreate: this.create.bind(this),
       CategoryUpdate: this.update.bind(this),
       CategoryDelete: this.delete.bind(this),

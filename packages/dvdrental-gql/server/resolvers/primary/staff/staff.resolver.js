@@ -96,7 +96,7 @@ class StaffResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       StaffList: this.list.bind(this),
-      StaffRead: this.read.bind(this),
+      Staff: this.read.bind(this),
       StaffCreate: this.create.bind(this),
       StaffUpdate: this.update.bind(this),
       StaffDelete: this.delete.bind(this),

@@ -96,7 +96,7 @@ class FilmTextResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       FilmTextList: this.list.bind(this),
-      FilmTextRead: this.read.bind(this),
+      FilmText: this.read.bind(this),
       FilmTextCreate: this.create.bind(this),
       FilmTextUpdate: this.update.bind(this),
       FilmTextDelete: this.delete.bind(this),

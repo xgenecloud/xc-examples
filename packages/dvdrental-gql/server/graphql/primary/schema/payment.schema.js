@@ -12,10 +12,10 @@ module.exports = `
 
     type Query { 
 		PaymentList(where: String, limit: Int, offset: Int, sort: String): [Payment]
-		PaymentRead(id:String): Payment
-		PaymentExists(id: String): Boolean
-		PaymentFindOne(where: String): Payment
-		PaymentCount(where: String): Int
+		Payment(id:String!): Payment
+		PaymentExists(id: String!): Boolean
+		PaymentFindOne(where: String!): Payment
+		PaymentCount(where: String!): Int
 		PaymentDistinct(columnName: String, where: String, limit: Int, offset: Int, sort: String): [Payment]
 		PaymentGroupBy(fields: String, having: String, limit: Int, offset: Int, sort: String): [PaymentGroupBy]
 		PaymentAggregate(columnName: String!, having: String, limit: Int, offset: Int, sort: String, func: String!): [PaymentAggregate]

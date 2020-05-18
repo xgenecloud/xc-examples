@@ -43,7 +43,7 @@ module.exports = {
   ],
   pks: [],
   hasMany: [{
-    "constraintName": "city_country_id_foreign",
+    "constraintName": "fk_city_country",
     "tableName": "city",
     "columnName": "country_id",
     "positionInUniqueConstraint": 1,
@@ -51,7 +51,7 @@ module.exports = {
     "referencedColumnName": "country_id",
     "matchOption": "NONE",
     "updateRule": "CASCADE",
-    "deleteRule": "CASCADE",
+    "deleteRule": "RESTRICT",
     "tableSchema": "sakila"
   }],
   belongsTo: [],

@@ -96,7 +96,7 @@ class InventoryResolver extends BaseResolver {
     /* map resolvers */
     let _resolvers = {
       InventoryList: this.list.bind(this),
-      InventoryRead: this.read.bind(this),
+      Inventory: this.read.bind(this),
       InventoryCreate: this.create.bind(this),
       InventoryUpdate: this.update.bind(this),
       InventoryDelete: this.delete.bind(this),
