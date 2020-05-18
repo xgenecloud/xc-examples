@@ -36,7 +36,6 @@
   "homepage": "https://github.com/o1lab/xgene_structure#readme",
   "dependencies": {
     "@webserverless/fc-express": "latest",
-    "acl": "^0.4.11",
     "aws-serverless-express": "^3.3.8",
     "azure-function-express": "^2.0.0",
     "bcryptjs": "^2.4.3",
