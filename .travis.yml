@@ -5,6 +5,7 @@ services:
   - mysql
 before_install:
   - cp ./packages/dvdrental-rest/test-config.xc.json ./packages/dvdrental-rest/config.xc.json
+  - cp ./packages/dvdrental-gql/test-config.xc.json ./packages/dvdrental-gql/config.xc.json
   - curl https://raw.githubusercontent.com/xgenecloud/xc-data/master/sakila-data.sql > sakila-data.sql
   - curl https://raw.githubusercontent.com/xgenecloud/xc-data/master/sakila-schema.sql > sakila-schema.sql
   - mysql -e 'CREATE DATABASE IF NOT EXISTS sakila;'
