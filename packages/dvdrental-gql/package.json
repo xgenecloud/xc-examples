@@ -76,9 +76,9 @@
     "raw-body": "^2.4.1",
     "uuid": "^3.3.3",
     "validator": "^12.1.0",
-    "xc-core": "0.0.34",
-    "xc-data-mapper": "0.0.20",
-    "xc-migrator": "0.0.28"
+    "xc-core": "^0.3.0",
+    "xc-data-mapper": "^0.3.0",
+    "xc-migrator": "^0.3.0"
   },
   "devDependencies": {
     "@graphql-inspector/core": "^1.27.0",
