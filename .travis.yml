@@ -11,6 +11,7 @@ before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS sakila;'
   - mysql -u root --default-character-set=utf8 sakila < sakila-schema.sql
   - mysql -u root --default-character-set=utf8 sakila < sakila-data.sql
+  - mysql -u root --default-character-set=utf8 sakila < packages/dvdrental-gql/server/tool/misc/auth/mysql/20200224_131832.up.sql
 install:
   - npm install
   - npm run lerna:install
