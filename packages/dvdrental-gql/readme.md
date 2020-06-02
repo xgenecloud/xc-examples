@@ -7,6 +7,7 @@ https://gist.github.com/taion/1cfe1595a32b89ea4265679b38eee7b9
 # Add sql connection parameters for production environment
 
 ./xc.config.json
+
 ```
 
 ```
