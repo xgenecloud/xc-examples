@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 12
+services:
+  - mysql
+before_install:
+  - cp ./test-config.xc.json ./config.xc.json
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS db;'
+  - mysql -u root --default-character-set=utf8 db < server/tool/misc/auth/mysql/20200224_131832.up.sql
+install:
+  - npm install
+script:
+  - npm run test:travis

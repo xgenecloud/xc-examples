@@ -83,7 +83,7 @@
     "validator": "^12.1.0",
     "xc-core": "0.0.34",
     "xc-data-mapper": "0.0.20",
-    "xc-migrator": "0.0.27"
+    "xc-migrator": "0.0.28"
   },
   "devDependencies": {
     "@pixi/jsdoc-template": "^2.5.1",

@@ -8,10 +8,10 @@ before_install:
   - cp ./packages/dvdrental-gql/test-config.xc.json ./packages/dvdrental-gql/config.xc.json
   - curl https://raw.githubusercontent.com/xgenecloud/xc-data/master/sakila-data.sql > sakila-data.sql
   - curl https://raw.githubusercontent.com/xgenecloud/xc-data/master/sakila-schema.sql > sakila-schema.sql
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS sakila;'
-  - mysql -u root --default-character-set=utf8 sakila < sakila-schema.sql
-  - mysql -u root --default-character-set=utf8 sakila < sakila-data.sql
-  - mysql -u root --default-character-set=utf8 sakila < packages/dvdrental-gql/server/tool/misc/auth/mysql/20200224_131832.up.sql
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS db;'
+  - mysql -u root --default-character-set=utf8 db < sakila-schema.sql
+  - mysql -u root --default-character-set=utf8 db < sakila-data.sql
+  - mysql -u root --default-character-set=utf8 db < packages/dvdrental-gql/server/tool/misc/auth/mysql/20200224_131832.up.sql
 install:
   - npm install
   - npm run lerna:install

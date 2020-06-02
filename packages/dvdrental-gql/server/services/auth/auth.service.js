@@ -6,6 +6,8 @@ const nodemailer = require('nodemailer');
 
 const uuidv4 = require('uuid/v4');
 
+const validator = require('validator');
+
 class AuthService extends BaseService {
 
   constructor(app = {}) {
@@ -64,23 +66,27 @@ class AuthService extends BaseService {
   async SignUp(args, {req}) {
 
 
-      let user = await this.users.findOne({where: `(email,eq,${args.data.email})`});
-      if (user && user.email) {
-        throw new Error({msg: `Email '${args.data.email}' already registered`})
-      }
+    let user = await this.users.findOne({where: `(email,eq,${args.data.email})`});
+    if (user && user.email) {
+      throw new Error({msg: `Email '${args.data.email}' already registered`})
+    }
 
-      user = await this.users.insert(args.data);
+    if (!validator.isEmail(args.data.email)) {
+      throw new Error({msg: `Invalid email`});
+    }
 
-      await this.transporter.sendMail({
-        from: this.app.$config.mailer.from,
-        to: "pranavcbalan@gmail.com",
-        subject: "Message title",
-        text: "Plaintext version of the message",
-        html: `<p> verification url : http://localhost:8080/api/v1/auth/email/validate/${user.email_verification_token}</p>`
-      })
+    user = await this.users.insert(args.data);
 
-      await util.promisify(req.login.bind(req))(user);
-      return user;
+    await this.transporter.sendMail({
+      from: this.app.$config.mailer.from,
+      to: "pranavcbalan@gmail.com",
+      subject: "Message title",
+      text: "Plaintext version of the message",
+      html: `<p> verification url : http://localhost:8080/api/v1/auth/email/validate/${user.email_verification_token}</p>`
+    })
+
+    await util.promisify(req.login.bind(req))(user);
+    return user;
 
   }
 

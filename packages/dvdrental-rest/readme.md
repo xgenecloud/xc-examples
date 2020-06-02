@@ -8,7 +8,6 @@ swagger spec
 # Deploy to GCP Cloud Run 
 
 ```
-
 # Add sql connection parameters for production environment
 
 ./xc.config.json

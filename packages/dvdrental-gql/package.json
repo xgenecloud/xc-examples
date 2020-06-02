@@ -22,7 +22,7 @@
     "aws:lambda:zip": "npm prune --production ; rm lambda.zip ; zip -r -o lambda.zip .",
     "aws:lambda:zip:win": "npm prune --production ; del /f lambda.zip ; powershell Compress-Archive . lambda.zip",
     "ali:fn:compute": "fun deploy",
-    "test:travis": "NODE_ENV=test ./node_modules/.bin/mocha server/tests/router/*.test.js --exit"
+    "test:travis": "NODE_ENV=test ./node_modules/.bin/mocha server/tests/router/auth.test.js --exit"
   },
   "repository": {
     "type": "git",
@@ -78,7 +78,7 @@
     "validator": "^12.1.0",
     "xc-core": "0.0.34",
     "xc-data-mapper": "0.0.20",
-    "xc-migrator": "0.0.27"
+    "xc-migrator": "0.0.28"
   },
   "devDependencies": {
     "@graphql-inspector/core": "^1.27.0",
