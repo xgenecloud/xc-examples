@@ -23,7 +23,8 @@
     "aws:lambda:zip:win": "npm prune --production ; del /f lambda.zip ; powershell Compress-Archive . lambda.zip",
     "azure:start": "func start",
     "azure:deploy": "func azure functionapp publish xc-azure-function",
-    "ali:fn:compute": "fun deploy"
+    "ali:fn:compute": "fun deploy",
+    "test:travis": "NODE_ENV=test ./node_modules/.bin/mocha server/tests/router/*.test.js --exit"
   },
   "repository": {
     "type": "git",
