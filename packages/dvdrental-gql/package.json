@@ -21,7 +21,8 @@
     "zeit:now": "now && now alias",
     "aws:lambda:zip": "npm prune --production ; rm lambda.zip ; zip -r -o lambda.zip .",
     "aws:lambda:zip:win": "npm prune --production ; del /f lambda.zip ; powershell Compress-Archive . lambda.zip",
-    "ali:fn:compute": "fun deploy"
+    "ali:fn:compute": "fun deploy",
+    "test:travis": "NODE_ENV=test ./node_modules/.bin/mocha server/tests/router/*.test.js --exit"
   },
   "repository": {
     "type": "git",

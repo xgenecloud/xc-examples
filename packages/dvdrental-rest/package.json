@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server/app.js",
+    "start": "NODE_ENV=production node server/app.js",
     "dev": "cross-env NODE_ENV=dev nodemon server/app.js",
     "install1": "npm install",
     "postinstall": "node ./postInstall.js",
