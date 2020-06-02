@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)](https://travis-ci.com/github/xgenecloud/xc-seed-gql) 
+
+
+
+
+
 https://gist.github.com/taion/1cfe1595a32b89ea4265679b38eee7b9
 
 

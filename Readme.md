@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)](https://travis-ci.com/github/xgenecloud/xc-examples) 
+
+
 # Cloud run Deployment
 
 [Refer](https://cloud.google.com/run/docs/quickstarts/build-and-deploy)
