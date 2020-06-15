@@ -3,9 +3,7 @@ const glob = require('glob');
 const passport = require('passport');
 const expressGraphql = require('express-graphql');
 const {buildSchema, execute} = require('graphql');
-const merger = require('merge-graphql-schemas')
-const mergeTypes = merger.mergeTypes
-const mergeResolvers = merger.mergeResolvers
+const { mergeTypeDefs, mergeResolvers } = require('@graphql-tools/merge');
 const {BaseComponent} = require('xc-core');
 
 class Controller extends BaseComponent {
@@ -88,7 +86,13 @@ class Controller extends BaseComponent {
         _types.push(require(file))
       });
       
-      const types = mergeTypes(_types);
+      const types = mergeTypeDefs(_types, {
+        useSchemaDefinition: true,
+        forceSchemaDefinition: true,
+        throwOnConflict: true,
+        commentDescriptions: true,
+        reverseDirectives: true,
+      });
       const rootValue = mergeResolvers(_resolvers);
       const schema = buildSchema(types);
       
