@@ -1,18 +1,19 @@
 module.exports = {
   "gcp": {
-    "cloudFunction":false
+    "cloudFunction": false
   },
   "aws": {
-    "lambda" : false
+    "lambda": false
   },
   "azure": {
-    "functionApp" : false
+    "functionApp": false
   },
   "zeit": {
-    "now" : false
+    "now": false
   },
-  "alibaba":{
-    "functionCompute":false
+  "alibaba": {
+    "functionCompute": false
   },
-  "monitor" :false
+  "serverless": true,
+  "monitor": false
 }

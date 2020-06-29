@@ -14,5 +14,6 @@ module.exports = {
   "alibaba": {
     "functionCompute": false
   },
-  "monitor" :false
+  "serverless": true,
+  "monitor": false
 }

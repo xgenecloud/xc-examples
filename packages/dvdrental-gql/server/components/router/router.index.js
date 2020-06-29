@@ -8,7 +8,6 @@ const session = require("express-session");
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const rateLimit = require("express-rate-limit");
-const KnexSessionStore = require("connect-session-knex")(session);
 var multer = require('multer')
 
 const helmet = require('helmet')
@@ -81,7 +80,7 @@ class Router extends BaseComponent {
 
 
     // Todo: Azure function app has issue with session
-    if (!(this.app.$config.azure.functionApp || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute)) {
+    if (!(this.app.$config.azure.functionApp || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute|| this.app.$config.serverless)) {
       this.router.use(
         session({
           resave: false,
@@ -97,7 +96,7 @@ class Router extends BaseComponent {
     this.router.use(cookieParser('XGene Cloud')); //session secret - should be overriden
     this.router.use(passport.initialize());
 
-    if (!this.app.$config.azure.functionApp) {
+    if (!(this.app.$config.azure.functionApp || this.app.$config.serverless)) {
       this.router.use(passport.session());
     }
 
@@ -113,7 +112,7 @@ class Router extends BaseComponent {
   }
 
   _getSessionStore() {
-
+    const KnexSessionStore = require("connect-session-knex")(session);
     const store = new KnexSessionStore({
       knex: this.app.$dbs.primaryDb,
       tablename: "sessions" // optional. Defaults to 'sessions'
@@ -124,7 +123,7 @@ class Router extends BaseComponent {
 
 
   async start() {
-    if (!(this.app.$config.azure.functionApp || this.app.$config.aws.lambda || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute)) {
+    if (!(this.app.$config.azure.functionApp || this.app.$config.aws.lambda || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute || this.app.$config.serverless)) {
       this.router.listen(this.app.$config.port, function () {
       })
     }

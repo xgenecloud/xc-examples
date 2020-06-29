@@ -10,6 +10,9 @@ const AliServer = require('@webserverless/fc-express').Server;
 let serverComponents = {};
 let appSingleton = null;
 
+const serverless = require('serverless-http');
+
+
 async function start() {
 
   try {
@@ -52,6 +55,9 @@ const init = new Promise((resolve, reject) => {
       } else if (serverComponents.$config.alibaba.functionCompute) {
         /* Serverless : Alibaba Function Compute */
         resolve(appSingleton = new AliServer(serverComponents.router.router));
+      } else if (serverComponents.$config.serverless) {
+        /* Serverless : Alibaba Function Compute */
+        resolve(appSingleton = serverless(serverComponents.router.router));
       } else {
         /* Serverless : Server */
         resolve(appSingleton = serverComponents.router.router);
@@ -95,9 +101,15 @@ module.exports.ali = async function (req, res, context) {
   server.httpProxy(req, res, context)
 }
 
+
+module.exports.serverless = async (event, context) => {
+  const handler = await init;
+  return await handler(event, context);
+};
+
 function printBanner(server) {
   /**************** START : print welcome banner ****************/
-  // const clear = require('clear');
+    // const clear = require('clear');
   const Table = require('cli-table');
 
   // instantiate

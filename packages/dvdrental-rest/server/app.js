@@ -6,6 +6,7 @@ const AliServer = require('@webserverless/fc-express').Server;
 const awsServerlessExpress = require('aws-serverless-express')
 const createHandler = require("azure-function-express").createHandler;
 
+const serverless = require('serverless-http');
 
 /* variables */
 let serverComponents = {};
@@ -56,6 +57,9 @@ const init = new Promise((resolve, reject) => {
       } else if (serverComponents.$config.alibaba.functionCompute) {
         /* Serverless : Alibaba Function Compute */
         resolve(appSingleton = new AliServer(serverComponents.router.router));
+      }else if (serverComponents.$config.serverless) {
+        /* Serverless : Alibaba Function Compute */
+        resolve(appSingleton = serverless(serverComponents.router.router));
       } else {
         /* Serverless : Server */
         resolve(appSingleton = serverComponents.router.router);
@@ -95,6 +99,13 @@ module.exports.ali = async function (req, res, context) {
   const server = await init;
   server.httpProxy(req, res, context)
 }
+
+
+
+module.exports.serverless = async (event, context) => {
+  const handler = await init;
+  return await handler(event,context);
+};
 
 
 function printBanner(server) {
