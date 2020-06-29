@@ -80,7 +80,7 @@ class Router extends BaseComponent {
 
 
     // Todo: Azure function app has issue with session
-    if (!(this.app.$config.azure.functionApp || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute|| this.app.$config.serverless)) {
+    if (!(this.app.$config.azure.functionApp || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute|| this.app.$config.serverlessFramework.express)) {
       this.router.use(
         session({
           resave: false,
@@ -96,7 +96,7 @@ class Router extends BaseComponent {
     this.router.use(cookieParser('XGene Cloud')); //session secret - should be overriden
     this.router.use(passport.initialize());
 
-    if (!(this.app.$config.azure.functionApp || this.app.$config.serverless)) {
+    if (!(this.app.$config.azure.functionApp || this.app.$config.serverlessFramework.express)) {
       this.router.use(passport.session());
     }
 
@@ -123,7 +123,7 @@ class Router extends BaseComponent {
 
 
   async start() {
-    if (!(this.app.$config.azure.functionApp || this.app.$config.aws.lambda || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute || this.app.$config.serverless)) {
+    if (!(this.app.$config.azure.functionApp || this.app.$config.aws.lambda || this.app.$config.zeit.now || this.app.$config.alibaba.functionCompute || this.app.$config.serverlessFramework.express)) {
       this.router.listen(this.app.$config.port, function () {
       })
     }

@@ -25,7 +25,7 @@
     "azure:deploy": "func azure functionapp publish xc-azure-function",
     "ali:fn:compute": "fun deploy",
     "test:travis": "NODE_ENV=test ./node_modules/.bin/mocha server/tests/router/*.test.js --exit",
-    "serverless:aws:deploy" : "sls deploy"
+    "sls:deploy": "sls deploy"
   },
   "repository": {
     "type": "git",
@@ -79,7 +79,7 @@
     "passport-oauth2-refresh": "^1.1.0",
     "pg": "^7.16.0",
     "raw-body": "^2.4.1",
-    "serverless-http": "^2.5.0",
+    "serverless-websockets-plugin": "^1.0.0",
     "swagger-ui-express": "^4.1.4",
     "uuid": "^3.3.3",
     "validator": "^12.1.0",

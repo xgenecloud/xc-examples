@@ -10,8 +10,6 @@ const AliServer = require('@webserverless/fc-express').Server;
 let serverComponents = {};
 let appSingleton = null;
 
-const serverless = require('serverless-http');
-
 
 async function start() {
 
@@ -55,8 +53,9 @@ const init = new Promise((resolve, reject) => {
       } else if (serverComponents.$config.alibaba.functionCompute) {
         /* Serverless : Alibaba Function Compute */
         resolve(appSingleton = new AliServer(serverComponents.router.router));
-      } else if (serverComponents.$config.serverless) {
-        /* Serverless : Alibaba Function Compute */
+      } else if (serverComponents.$config.serverlessFramework.express) {
+        const serverless = require('serverless-http');
+        /* Serverless : Serverless framework */
         resolve(appSingleton = serverless(serverComponents.router.router));
       } else {
         /* Serverless : Server */

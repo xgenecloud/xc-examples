@@ -9,6 +9,7 @@ provider:
   stage: production
   region: us-east-1
 
+
 functions:
   app:
     handler: server/app.serverless
