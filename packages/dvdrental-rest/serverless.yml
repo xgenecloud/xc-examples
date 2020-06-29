@@ -8,9 +8,6 @@ provider:
   runtime: nodejs12.x
   stage: production
   region: us-east-1
-  websocketsApiName: xc-serverless-websockets-api
-  websocketsApiRouteSelectionExpression: $request.body.action # custom routes are selected by the value of the action property in the body
-
 
 functions:
   app:
