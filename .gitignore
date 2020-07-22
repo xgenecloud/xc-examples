@@ -77,7 +77,7 @@ mongod
 # Nuxt generate
 dist
 
-package-lock.json
+#package-lock.json
 .serverless
 /packages/dvdrental-rest/token.json
 /packages/dvdrental-rest/azure-functions-core-tools/
