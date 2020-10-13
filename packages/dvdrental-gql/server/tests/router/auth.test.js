@@ -83,7 +83,7 @@ describe('Our application', function () {
 
     });
 
-    it('Signin with valid email', function (done) {
+    it('SignIn with valid email', function (done) {
       httpSession
         .post('/graphql')
         .send({
@@ -133,7 +133,7 @@ describe('Our application', function () {
 
     });
 
-    it('Signin with invalid email', function (done) {
+    it('SignIn with invalid email', function (done) {
       request(app)
         .post('/graphql')
         .send({
