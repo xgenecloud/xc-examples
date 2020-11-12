@@ -68,22 +68,26 @@ class AuthService extends BaseService {
 
     let user = await this.users.findOne({where: `(email,eq,${args.data.email})`});
     if (user && user.email) {
-      throw new Error({msg: `Email '${args.data.email}' already registered`})
+      throw new Error(`Email '${args.data.email}' already registered`)
     }
 
     if (!validator.isEmail(args.data.email)) {
-      throw new Error({msg: `Invalid email`});
+      throw new Error( `Invalid email`);
     }
 
     user = await this.users.insert(args.data);
 
-    await this.transporter.sendMail({
-      from: this.app.$config.mailer.from,
-      to: args.data.email,
-      subject: "Message title",
-      text: "Plaintext version of the message",
-      html: `<p> verification url : http://localhost:8080/api/v1/auth/email/validate/${user.email_verification_token}</p>`
-    })
+    try {
+      await this.transporter.sendMail({
+        from: this.app.$config.mailer.from,
+        to: user.email,
+        subject: "Verify Email",
+        text: `Verify your email by visiting following link : ${this.app.$config.siteUrl}email/verify/${user.email_verification_token}.`,
+      })
+    } catch (e) {
+      // throw e;
+      console.log('SMTP SendMail error : ', e.message);
+    }
 
     await util.promisify(req.login.bind(req))(user);
     return user;
@@ -114,14 +118,17 @@ class AuthService extends BaseService {
 
       await this.users.updateByPk(user.id + '', user);
 
-      await this.transporter.sendMail({
-        from: this.app.$config.mailer.from,
-        to: args.email,
-        subject: "Message title",
-        text: "Plaintext version of the message",
-        html: `<p> Token : ${token}</p>`
-      })
-
+      try {
+        await this.transporter.sendMail({
+          from: this.app.$config.mailer.from,
+          to: user.email,
+          subject: "Password Reset Link",
+          text: `Visit following link to update your password : ${this.app.$config.siteUrl}user/password/reset?token=${token}.`,
+        })
+      } catch (e) {
+        // throw e;
+        console.log('SMTP SendMail error : ', e.message);
+      }
 
       return true;
     } catch (e) {
